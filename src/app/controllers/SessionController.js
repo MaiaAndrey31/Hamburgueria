@@ -1,0 +1,44 @@
+import * as yup from 'yup'
+import User from '../models/User'
+
+
+class SessionController {
+   async store (req, res){
+        const schema = yup.object().shape({
+            email: yup.string().email().required(),
+            password: yup.string().required()
+        })
+
+        const validationUserIncorrect = () => {
+            return res.status(401).json({error: 'Email ou Senha não conferem'})
+        }
+       if( !( await schema.isValid(req.body, ))){
+        validationUserIncorrect()
+
+       }
+
+       const {email, password} = req.body
+       const user = await User.findOne({
+        where: {email},
+       })
+       if (!user) {
+        validationUserIncorrect()
+
+       }
+
+      if (!(await user.checkPassword(password))) {
+        validationUserIncorrect()
+      }
+
+       return res.json({
+        id: user.id,
+        email,
+        name: user.name,
+        admin: user.admin
+       })
+
+    }
+}
+
+
+export default new SessionController()
