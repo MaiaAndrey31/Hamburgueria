@@ -11,5 +11,6 @@ const routes = new Router()
 routes.post('/users', UserController.store)
 routes.post('/sessions', SessionController.store)
 routes.post('/products', upload.single('file'), ProductsController.store)
+routes.get('/products', ProductsController.index)
 
 export default routes
