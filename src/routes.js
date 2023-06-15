@@ -9,6 +9,7 @@ import ProductsController from './app/controllers/ProductsController'
 import CategoriesController from './app/controllers/CategoriesController'
 
 import authMiddleware from '../src/app/middlewares/auth'
+import OrderController from './app/controllers/OrderController'
 
 const upload = multer(multerConfig)
 const routes = new Router()
@@ -24,5 +25,7 @@ routes.get('/products', ProductsController.index)
 
 routes.post('/categories', CategoriesController.store)
 routes.get('/categories', CategoriesController.index)
+
+routes.post('/orders', OrderController.store)
 
 export default routes
