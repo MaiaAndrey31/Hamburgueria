@@ -28,11 +28,13 @@ class ProductsController {
   }
   async index(req, res) {
     const products = await Product.findAll({
-      include:[{
+      include:[
+        {
         model: Category, 
         as: 'category',
         attributes: ['id', 'name'],
-      },],
+      },
+    ],
     })
     return res.json(products)
   }
