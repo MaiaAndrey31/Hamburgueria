@@ -26,6 +26,7 @@ routes.put('/products/:id', upload.single('file') , ProductsController.update)
 
 routes.post('/categories', upload.single('file') , CategoriesController.store)
 routes.get('/categories', CategoriesController.index)
+routes.put('/categories/:id', upload.single('file') , CategoriesController.update)
 
 routes.post('/orders', OrderController.store)
 routes.get('/orders', OrderController.index)
