@@ -6,7 +6,7 @@ class ProductsController {
     const schema = yup.object().shape({
       name: yup.string().required(),
       price: yup.number().required(),
-      category: yup.string().required(),
+      category_id: yup.number().required(),
     })
     try {
       await schema.validateSync(req.body, { abortEarly: false })
@@ -14,12 +14,12 @@ class ProductsController {
       return res.status(400).json({ error: err.errors })
     }
     const { filename: path } = req.file
-    const { name, price, category } = req.body
+    const { name, price, category_id } = req.body
 
     const product = await Product.create({
         name,
         price,
-        category,
+        category_id,
         path,
     })
 
