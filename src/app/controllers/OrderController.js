@@ -3,6 +3,7 @@ import * as yup from 'yup'
 import Product from '../models/Products'
 import Category from '../models/Categories'
 import Order from '../schemas/Order'
+import User from '../models/User'
 
 class OrderController{
    async store(req, res){
@@ -89,6 +90,12 @@ class OrderController{
          }
           catch(err) { 
             return res.status(400).json({error: err.errors})
+         }
+
+         const { admin: isAdmin } = await User.findByPk(req.userId) 
+
+         if(!isAdmin) {
+           return res.status(401).json()
          }
     
 
