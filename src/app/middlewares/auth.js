@@ -16,7 +16,7 @@ export default (req, res, next) => {
                 if (err){
                     throw new Error()
                 }
-                req.userid = decoded.id
+                req.userId = decoded.id
                 req.userName = decoded.name
                 return next()
             } )
