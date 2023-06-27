@@ -13,7 +13,6 @@ module.exports = {
   rules: {
     camelcase: 'off',
     'prettier/prettier': 'error',
-    semi: false,
-    singlequote: true,
+    semi: 0,
   },
 }

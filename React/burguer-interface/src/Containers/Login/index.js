@@ -1,10 +1,12 @@
 import React from 'react'
 
+import LoginImg from '../../Assets/loginImage.svg'
+import Logo from '../../Assets/logo.svg'
+
 import {
   Container,
-  Background,
+  LoginImage,
   ContainerItems,
- 
   Input,
   CadastroLink,
   Button,
@@ -14,9 +16,9 @@ import {
 function Login() {
   return (
     <Container>
-      <Background />
+      <LoginImage src={LoginImg} />
       <ContainerItems>
-        <img />
+        <img src={Logo} />
         <h1>Login</h1>
 
         <Label>Email</Label>
@@ -28,7 +30,7 @@ function Login() {
         <Button>Entrar</Button>
 
         <CadastroLink>
-          Ainda não tem cadastro?<a>SignUp</a>
+          Ainda não tem cadastro? <a> SignUp</a>
         </CadastroLink>
       </ContainerItems>
     </Container>

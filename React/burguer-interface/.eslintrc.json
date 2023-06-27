@@ -28,6 +28,7 @@
         "import-helpers/order-imports": 
             "warn",
             "semi":0,
+            
             // example configuration
                 "newlinesBetween": "always",
                 "groups": [
