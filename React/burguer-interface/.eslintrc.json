@@ -5,7 +5,9 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "standard"
+        "standard",
+        "plugin:react-hooks/recommended",
+        "plugin:prettier/recommended"
     ],
     "overrides": [
     ],
@@ -15,11 +17,15 @@
     },
     "plugins": [
         "react",
-        "eslint-plugin-import-helpers"
+        "eslint-plugin-import-helpers",
+        "react-hooks",
+        "prettier"
     ],
     "rules": {
-        "semi": 0,
-        "single-quotes": 1,
+        "prettier/prettier": "error",
+        "react-hooks/rules-of-hooks":"error",
+        "react-hooks/exhaustive-deps":"warn",
+       
         "import-helpers/order-imports": 
             "warn",
             // example configuration
