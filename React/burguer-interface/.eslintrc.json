@@ -24,10 +24,10 @@
     "rules": {
         "prettier/prettier": [ "error", { "endOfLine": "auto" } ],
         "react-hooks/rules-of-hooks":"error",
-        "react-hooks/exhaustive-deps":"warn",
-       
+        "react-hooks/exhaustive-deps":"warn",       
         "import-helpers/order-imports": 
             "warn",
+            "semi":0,
             // example configuration
                 "newlinesBetween": "always",
                 "groups": [
