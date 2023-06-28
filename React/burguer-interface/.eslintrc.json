@@ -24,15 +24,16 @@
     "rules": {
         "prettier/prettier": [ "error", { "endOfLine": "auto" } ],
         "react-hooks/rules-of-hooks":"error",
+        "no-unused-vars":"warn",
         "react-hooks/exhaustive-deps":"warn",       
         "import-helpers/order-imports": 
             "warn",
             "semi":0,
             
             // example configuration
-                "newlinesBetween": "always",
+                "newlinesBetween": 2,
                 "groups": [
-                    "module",
+                    1,
                     "/^@shared/",
                     ["parent", "sibling", "index"]
                 ],

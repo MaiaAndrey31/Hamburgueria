@@ -29,7 +29,21 @@ export const ContainerItems = styled.div`
     color: #ffffff;
     margin-top: 70pxpx;
   }
+
+  form{
+    display: flex;
+    flex-direction: column;
+  }
 `
+export const ErrorMessage = styled.p`
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+margin-top: 2px;
+color: #CC1717;
+`
+
 export const Label = styled.p`
   font-style: normal;
   font-weight: 500;
@@ -44,7 +58,7 @@ export const Input = styled.input`
   height: 38px;
   background: #ffffff;
   border-radius: 5px;
-  border: none;
+  border: ${props => (props.error ? '3px solid #CC1717' : 'none')} ;
   padding-left: 10px;
 `
 export const Button = styled.button`
