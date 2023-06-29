@@ -9,17 +9,17 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
 `
-export const LoginImage = styled.img`
-  height: 70%;
+export const RegisterImage = styled.img`
+  height: 80%;
 `
 export const ContainerItems = styled.div`
-  height: 70%;
+  height: 80%;
   background: #373737;
   border-radius: 0 10px 10px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 25px 75px;
+  padding: 35px 75px;
 
   h1 {
     font-weight: 500;
@@ -27,7 +27,7 @@ export const ContainerItems = styled.div`
     line-height: 28px;
     text-align: center;
     color: #ffffff;
-    margin-top: 70px;
+    margin-top: 6px;
   }
 
   form {
@@ -49,7 +49,7 @@ export const Label = styled.p`
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
-  margin-top: 28px;
+  margin-top:  ${(props) => (props.error ? '12px' : '18px' )} ;
   margin-bottom: 5px;
   color: #ffffff;
 `
@@ -62,7 +62,7 @@ export const Input = styled.input`
   padding-left: 10px;
 `
 
-export const CadastroLink = styled.p`
+export const SignInLink = styled.p`
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
