@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup"
 
 import apiBurguer from '../../Services/api'
 
-
+import Button from '../../Components/Button/index'
 import LoginImg from '../../Assets/loginImage.svg'
 import Logo from '../../Assets/logo.svg'
 
@@ -15,8 +15,7 @@ import {
   ContainerItems,
   Input,
   CadastroLink,
-  Button,
-  Label,
+    Label,
   ErrorMessage
 } from './style'
 

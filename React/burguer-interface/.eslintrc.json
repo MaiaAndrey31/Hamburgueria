@@ -24,6 +24,7 @@
     "rules": {
         "prettier/prettier": [ "error", { "endOfLine": "auto" } ],
         "react-hooks/rules-of-hooks":"error",
+        "react/prop-types": 0,
         "no-unused-vars":"warn",
         "react-hooks/exhaustive-deps":"warn",       
         "import-helpers/order-imports": 
