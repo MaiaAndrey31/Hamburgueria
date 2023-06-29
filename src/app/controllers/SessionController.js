@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import * as yup from 'yup'
 import jwt from 'jsonwebtoken'
 import User from '../models/User'

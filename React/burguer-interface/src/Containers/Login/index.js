@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup"
 
+import apiBurguer from '../../Services/api'
+
 
 import LoginImg from '../../Assets/loginImage.svg'
 import Logo from '../../Assets/logo.svg'
@@ -34,7 +36,14 @@ function Login() {
 
   
 
-  const onSubmit = (data) => console.log(data)
+  const onSubmit = async  clientData => {
+
+    const response = await apiBurguer.post('/sessions', {
+      email: clientData.email,
+      password: clientData.password
+    })
+
+  }
   return (
     <Container>
       <LoginImage src={LoginImg} />
