@@ -2,6 +2,8 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup"
+import { toast } from 'react-toastify'
+
 
 import apiBurguer from '../../Services/api'
 
@@ -37,10 +39,22 @@ function Login() {
 
   const onSubmit = async  clientData => {
 
-    const response = await apiBurguer.post('/sessions', {
-      email: clientData.email,
-      password: clientData.password
-    })
+    const response = await toast.promise(
+      apiBurguer.post('/sessions', {
+        email: clientData.email,
+        password: clientData.password
+      }),{
+        pending: 'Verificando os Dados',
+        success: 'Uhull Tudo certo 👌',
+        error: 'Tem alguma coisa errada com seu login 🤯'
+
+      }
+
+    )
+    
+    
+    
+   
 
   }
   return (

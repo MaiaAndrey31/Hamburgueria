@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+import {toast} from 'react-toastify'
 
 import apiBurguer from '../../Services/api'
 
@@ -44,11 +45,57 @@ function Register() {
   })
 
   const onSubmit = async (clientData) => {
-    const response = await apiBurguer.post('/users', {
-      name: clientData.name,
-      email: clientData.email,
-      password: clientData.password,
-    })
+
+    try{
+      const {status} = await apiBurguer.post('/users', {
+        name: clientData.name,
+        email: clientData.email,
+        password: clientData.password,
+      },{validateStatus: () => true})
+
+      if(status == 201 || status == 200){
+        toast.success('Cadastro Realizado Uhull!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        })}
+
+        else if(status == 409){
+          toast.error('Email já Cadastrado!', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            })
+        }
+        else{
+          throw new Error()
+        }
+
+      
+    } catch(err) {
+
+      toast.error('Falha no sistema, tente novamente em alguns segundos!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        })
+    }
+   
   }
   return (
     <Container>
