@@ -10,10 +10,10 @@ export const Container = styled.div`
   align-items: center;
 `
 export const LoginImage = styled.img`
-  height: 70%;
+  height: 80%;
 `
 export const ContainerItems = styled.div`
-  height: 70%;
+  height: 80%;
   background: #373737;
   border-radius: 0 10px 10px 0;
   display: flex;

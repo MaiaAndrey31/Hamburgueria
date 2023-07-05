@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup"
 import { toast } from 'react-toastify'
+import { useUser } from '../../hooks/UserContext'
 
 
 import apiBurguer from '../../Services/api'
@@ -22,6 +23,9 @@ import {
 } from './style'
 
 function Login() {
+  const user = useUser()
+
+  console.log(user)
 
   const schema = yup.object().shape({
     email: yup.string().email('Digite um e-mail válido').required('e-mail é obrigatório'),
