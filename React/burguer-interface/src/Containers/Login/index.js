@@ -23,7 +23,7 @@ import {
 } from './style'
 
 function Login() {
-  const {putUserData, userData} = useUser()
+  const {putUserData} = useUser()
 
 
 
@@ -57,7 +57,7 @@ function Login() {
     )
     
     putUserData(data)
-    console.log( userData)
+    
     
    
 
