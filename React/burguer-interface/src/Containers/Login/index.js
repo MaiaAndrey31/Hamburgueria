@@ -23,9 +23,9 @@ import {
 } from './style'
 
 function Login() {
-  const user = useUser()
+  const {putUserData, userData} = useUser()
 
-  console.log(user)
+
 
   const schema = yup.object().shape({
     email: yup.string().email('Digite um e-mail válido').required('e-mail é obrigatório'),
@@ -43,7 +43,7 @@ function Login() {
 
   const onSubmit = async  clientData => {
 
-    const response = await toast.promise(
+    const {data} = await toast.promise(
       apiBurguer.post('/sessions', {
         email: clientData.email,
         password: clientData.password
@@ -56,7 +56,8 @@ function Login() {
 
     )
     
-    
+    putUserData(data)
+    console.log( userData)
     
    
 
