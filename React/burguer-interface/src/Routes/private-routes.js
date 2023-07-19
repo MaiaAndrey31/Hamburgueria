@@ -11,7 +11,7 @@ if (!user){
     
 }
 
-return <Route {...rest}component={component} />
+return <Route {...rest} component={component} />
 
 
 }
@@ -19,5 +19,5 @@ return <Route {...rest}component={component} />
 export default PrivateRoutes
 
 PrivateRoutes.PropTypes={
-    component: PropTypes.oneOfType([PropTypes.function, PropTypes.element])
+    component: PropTypes.oneOfType([PropTypes.func, PropTypes.element])
 }

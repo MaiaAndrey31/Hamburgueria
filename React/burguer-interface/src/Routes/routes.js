@@ -14,9 +14,9 @@ function Routes() {
 
     <Router>
         <Switch>
-            <Route component={Home} path="/"/>
+            <PrivateRoutes exact component={Home} path="/"/>
             <Route component= {Login} path="/login" />
-            <PrivateRoutes exact component= {Register} path="/cadastro" />
+            <Route component= {Register} path="/cadastro" />
         </Switch>
 
     </Router>
