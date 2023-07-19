@@ -1,5 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import {Link} from 'react-router-dom'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import {toast} from 'react-toastify'
@@ -141,7 +142,7 @@ function Register() {
           </Button>
         </form>
         <SignInLink>
-          Já tem cadastro? <a> Entrar</a>
+          Já tem cadastro?{' '} <Link style= {{color: 'white'}} to="/login"> Entrar</Link>
         </SignInLink>
       </ContainerItems>
     </Container>
