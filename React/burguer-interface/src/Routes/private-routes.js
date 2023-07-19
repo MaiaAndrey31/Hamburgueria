@@ -7,10 +7,11 @@ const user = localStorage.getItem('burger:userInfo')
 
 if (!user){
 
-    return(
-        <Redirect to="/login" />
-    )
+    return <Redirect to="/login" />
+    
 }
+
+return <Route {...rest}component={component} />
 
 
 }
