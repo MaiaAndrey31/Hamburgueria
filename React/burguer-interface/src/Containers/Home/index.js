@@ -7,18 +7,7 @@ import CategoryCarousel from "../../Components/Category Carousel"
 
 function Home(){
 
-    useEffect(( )=> {
 
-        async function loadCategories(){
-            const response = await api.get( "/categories")
-
-            console.log(response)
-
-        }
-
-        loadCategories()
-
-    },[])
     return (
         <Container>
             <HomeImg src={HomeLogo} alt="logo da home" />

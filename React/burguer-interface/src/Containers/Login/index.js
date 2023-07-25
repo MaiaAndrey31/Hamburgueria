@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import * as yup from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup"
 import { toast } from 'react-toastify'
@@ -24,6 +24,7 @@ import {
 } from './style'
 
 function Login() {
+  const history = useHistory()
   const {putUserData} = useUser()
 
 
@@ -58,6 +59,13 @@ function Login() {
     )
     
     putUserData(data)
+
+    setTimeout(() => {
+      history.push('/')
+
+    }, 1000)
+
+    
     
     
    

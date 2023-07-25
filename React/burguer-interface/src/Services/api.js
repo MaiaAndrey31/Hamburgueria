@@ -7,8 +7,10 @@ const apiBurguer = axios.create({
 apiBurguer.interceptors.request.use(async config => {
 
      const userData = await localStorage.getItem('burger:userInfo')
+     const token = userData && JSON.parse(userData).token
+     config.headers.Authorization = `Bearer ${token}` 
+     return config
 
-     console.log(userData)
 })
 
 export default apiBurguer
