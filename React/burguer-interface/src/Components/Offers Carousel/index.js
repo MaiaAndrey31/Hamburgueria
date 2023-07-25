@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import Category from '../../Assets/CATEGORIAS.png'
-import { Container, ContainerItems, CategoryImg, Image, Button } from './style'
+import Offer from '../../Assets/OFERTAS.png'
+import { Container, ContainerItems, OfferImg, Image, Button } from './style'
 import Carousel from 'react-elastic-carousel'
 import api from "../../Services/api"
 
 
-function CategoryCarousel() {
+function OffersCarousel() {
   const [categories, setCategories] = useState()
 
   useEffect(() => {
@@ -30,7 +30,7 @@ function CategoryCarousel() {
 
   return (
     <Container>
-      <CategoryImg src={Category} alt="Categorias" />
+      <OfferImg src={Offer} alt="Ofertas" />
 
       <Carousel itemsToShow={4} style={{width:'90%'}} breakPoints={breakpoints}>
         {
@@ -46,4 +46,4 @@ function CategoryCarousel() {
   )
 }
 
-export default CategoryCarousel
+export default OffersCarousel

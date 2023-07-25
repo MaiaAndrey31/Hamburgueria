@@ -29,7 +29,7 @@ color: #efefef;
 
 `
 
-export const CategoryImg = styled.img ``
+export const OfferImg = styled.img ``
 
 export const ContainerItems = styled.div `
 display: flex;

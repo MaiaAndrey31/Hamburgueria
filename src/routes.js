@@ -1,7 +1,8 @@
+/* eslint-disable prettier/prettier */
 import { Router } from 'express'
 
 import multer from 'multer'
-import multerConfig from "./config/multer"
+import multerConfig from './config/multer'
 
 import UserController from './app/controllers/UserController'
 import SessionController from './app/controllers/SessionController'
@@ -22,16 +23,18 @@ routes.use(authMiddleware)
 
 routes.post('/products', upload.single('file'), ProductsController.store)
 routes.get('/products', ProductsController.index)
-routes.put('/products/:id', upload.single('file') , ProductsController.update)
+routes.put('/products/:id', upload.single('file'), ProductsController.update)
 
-routes.post('/categories', upload.single('file') , CategoriesController.store)
+routes.post('/categories', upload.single('file'), CategoriesController.store)
 routes.get('/categories', CategoriesController.index)
-routes.put('/categories/:id', upload.single('file') , CategoriesController.update)
+routes.put(
+  '/categories/:id',
+  upload.single('file'),
+  CategoriesController.update
+)
 
 routes.post('/orders', OrderController.store)
 routes.get('/orders', OrderController.index)
 routes.put('/orders/:id', OrderController.update)
-
-
 
 export default routes

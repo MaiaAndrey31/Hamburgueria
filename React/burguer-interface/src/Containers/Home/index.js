@@ -1,9 +1,9 @@
-import React, {useEffect} from "react"
+import React from "react"
 import HomeLogo from "../../Assets/homelogo.jpg"
-import api from "../../Services/api"
 
 import { Container, HomeImg } from "./style"
 import CategoryCarousel from "../../Components/Category Carousel"
+import OffersCarousel from "../../Components/Offers Carousel"
 
 function Home(){
 
@@ -12,6 +12,7 @@ function Home(){
         <Container>
             <HomeImg src={HomeLogo} alt="logo da home" />
             <CategoryCarousel />
+            <OffersCarousel/>
         </Container>
     )
 
