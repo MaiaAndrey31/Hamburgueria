@@ -3,21 +3,25 @@ import Offer from '../../Assets/OFERTAS.png'
 import { Container, ContainerItems, OfferImg, Image, Button } from './style'
 import Carousel from 'react-elastic-carousel'
 import api from "../../Services/api"
-
+import formatCurrency from '../../utils/FormatCurrency'
 
 function OffersCarousel() {
-  const [categories, setCategories] = useState()
+  const [offers, setOffers] = useState()
 
   useEffect(() => {
-    async function loadCategories() {
-      const { data } = await api.get('categories')
+    async function loadOffers() {
+      const { data } = await api.get('products')
+
+      const onlyOffers = data.filter(product => product.offer).map(product =>{
+        return {...product, formatedPrice: formatCurrency(product.price)}
+      })
 
      
 
-      setCategories(data)
+      setOffers(onlyOffers)
     }
 
-    loadCategories()
+    loadOffers()
   }, [])
 
   const breakpoints = [
@@ -34,10 +38,12 @@ function OffersCarousel() {
 
       <Carousel itemsToShow={4} style={{width:'90%'}} breakPoints={breakpoints}>
         {
-            categories && categories.map(category => (
-                <ContainerItems key={category.id}>
-                    <Image src={category.url} alt='imagem da categoria'/>
-                    <Button>{category.name}</Button>
+            offers && offers.map(product => (
+                <ContainerItems key={product.id}>
+                    <Image src={product.url} alt='imagem da oferta'/>
+                    <p>{product.name}</p>
+                    <p>{product.formatedPrice}</p>
+                    <Button>Peça agora</Button>
                 </ContainerItems>
             ))}
        
