@@ -4,7 +4,7 @@ import HomeLogo from "../../Assets/homelogo.jpg"
 import { Container, HomeImg } from "./style"
 import {CategoryCarousel, OffersCarousel } from "../../Components"
 
-function Home(){
+export function Home(){
 
 
     return (
@@ -17,4 +17,3 @@ function Home(){
 
 }
 
-export default Home

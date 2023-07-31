@@ -23,7 +23,7 @@ import {
   ErrorMessage
 } from './style'
 
-function Login() {
+export function Login() {
   const history = useHistory()
   const {putUserData} = useUser()
 
@@ -96,4 +96,3 @@ function Login() {
   )
 }
 
-export default Login

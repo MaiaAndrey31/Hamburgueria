@@ -21,7 +21,7 @@ import {
   ErrorMessage,
 } from './style'
 
-function Register() {
+export function Register() {
   const schema = yup.object().shape({
     name: yup.string('Digite um nome').required('Nome é obrigatório'),
     email: yup

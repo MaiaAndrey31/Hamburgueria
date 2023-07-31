@@ -12,7 +12,7 @@ import {
 import {CardProduct} from '../../Components'
 import formatCurrency from '../../utils/FormatCurrency'
 
-function Products() {
+export function Products() {
   const [categories, setCategories] = useState([])
   const [products, setProducts] = useState([])
   const [filteredproducts, setFilteredProducts] = useState([])
@@ -80,4 +80,3 @@ function Products() {
   )
 }
 
-export default Products
