@@ -7,6 +7,7 @@ padding: 16px;
 border-radius: 30px;
 background: #FFF;
 box-shadow: 0px 30px 60px 0px rgba(57, 57, 57, 0.10);
+width: max-content;
 
 div{
     display: flex;
