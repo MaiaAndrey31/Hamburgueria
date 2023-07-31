@@ -7,7 +7,7 @@ import {toast} from 'react-toastify'
 
 import apiBurguer from '../../Services/api'
 
-import Button from '../../Components/Button/index'
+import {Button} from '../../Components'
 import RegImg from '../../Assets/SignupImg.svg'
 import Logo from '../../Assets/logo.svg'
 

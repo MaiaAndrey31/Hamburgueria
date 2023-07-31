@@ -9,7 +9,7 @@ import { useUser } from '../../hooks/UserContext'
 
 import apiBurguer from '../../Services/api'
 
-import Button from '../../Components/Button/index'
+import {Button} from '../../Components'
 import LoginImg from '../../Assets/loginImage.svg'
 import Logo from '../../Assets/logo.svg'
 

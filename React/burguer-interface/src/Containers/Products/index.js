@@ -9,7 +9,7 @@ import {
   CategoriesMenu,
   ProductsContainer,
 } from './style'
-import CardProduct from '../../Components/CardProduct'
+import {CardProduct} from '../../Components'
 import formatCurrency from '../../utils/FormatCurrency'
 
 function Products() {
