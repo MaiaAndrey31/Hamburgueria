@@ -7,20 +7,19 @@ import Login from '../Containers/Login'
 import Register from '../Containers/Register'
 
 import PrivateRoutes from './private-routes'
+import Products from '../Containers/Products'
 
 function Routes() {
-
-    return (
-
+  return (
     <Router>
-        <Switch>
-            <PrivateRoutes exact component={Home} path="/"/>
-            <Route component= {Login} path="/login" />
-            <Route component= {Register} path="/cadastro" />
-        </Switch>
-
+      <Switch>
+        <Route component={Login} path="/login" />
+        <Route component={Register} path="/cadastro" />
+        <PrivateRoutes exact component={Home} path="/" />
+        <PrivateRoutes component={Products} path="/produtos" />
+      </Switch>
     </Router>
-    )
+  )
 }
 
 export default Routes

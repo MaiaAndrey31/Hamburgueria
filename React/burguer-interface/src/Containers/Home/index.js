@@ -1,20 +1,21 @@
 import React from "react"
-import ProductsLogo from "../../Assets/ProductsLogo.png"
+import HomeLogo from "../../Assets/homelogo.jpg"
 
-import { Container, LogoImg } from "./style"
+import { Container, HomeImg } from "./style"
 import CategoryCarousel from "../../Components/Category Carousel"
+import OffersCarousel from "../../Components/Offers Carousel"
 
-function Products(){
+function Home(){
 
 
     return (
         <Container>
-            <LogoImg src={ProductsLogo} alt="logo da Products" />
+            <HomeImg src={HomeLogo} alt="logo da home" />
             <CategoryCarousel />
-          
+            <OffersCarousel/>
         </Container>
     )
 
 }
 
-export default Products
+export default Home
