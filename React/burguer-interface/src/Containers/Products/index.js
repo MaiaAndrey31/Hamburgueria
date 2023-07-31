@@ -57,7 +57,7 @@ function Products() {
       <ProductImg src={productLogo} alt="logo da home" />
       <CategoriesMenu>
         {categories &&
-          categories.map((category) => (
+          categories.map(category => (
             <CategoryButton
               type="button"
               key={category.id}
