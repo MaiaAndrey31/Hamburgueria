@@ -20,7 +20,7 @@ export const CartProvider = ({ children }) => {
     } else {
       product.quantity = 1
       newCartProduct = [...cartProducts, product]
-      setCartProducts(newCartProduct)
+      setCartProducts()
     }
 
     await localStorage.setItem('burger:cartInfo', JSON.stringify(newCartProduct))
