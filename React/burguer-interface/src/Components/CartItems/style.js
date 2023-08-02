@@ -36,6 +36,21 @@ p{
     font-size: 16px;
     
 }
+
+.quantity-container{
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+
+    button{
+        height: 30px;
+        background: transparent;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
+}
+
 `
 
 export const EmptyCart = styled.p`
