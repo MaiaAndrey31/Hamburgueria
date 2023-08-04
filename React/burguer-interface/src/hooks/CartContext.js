@@ -7,6 +7,12 @@ const CartContext = createContext({})
 export const CartProvider = ({ children }) => {
   const [cartProducts, setCartProducts] = useState([])
 
+
+  const updateLocalStorage = async products => {
+    await localStorage.setItem('burger:cartInfo', JSON.stringify(products))
+
+  }
+
   const putProductsInCart = async (product) => {
     const cartIndex = cartProducts.findIndex((prd) => prd.id === product.id)
     let newCartProduct = []
@@ -26,6 +32,38 @@ export const CartProvider = ({ children }) => {
     await localStorage.setItem('burger:cartInfo', JSON.stringify(newCartProduct))
   }
 
+  const deleteProducts = async ProductId => {
+    const newCart = cartProducts.filter(product => product.id !== ProductId)
+
+    setCartProducts(newCart)
+  }
+
+  const increaseProducts = async ProductId => {
+    const newCart = cartProducts.map(product => {
+      return product.id === ProductId ? {...product, quantity: product.quantity + 1} : product
+    })
+    setCartProducts(newCart)
+
+    await localStorage.setItem('burger:cartInfo', JSON.stringify(newCart))
+  }
+
+  const decreaseProducts = async ProductId => {
+
+    const cartIndex = cartProducts.findIndex(pd => pd.id === ProductId)
+      if(cartProducts[cartIndex].quantity > 1){
+
+    const newCart = cartProducts.map(product => {
+      return product.id === ProductId ? {...product, quantity: product.quantity - 1} : product
+    })
+    setCartProducts(newCart)
+
+    await localStorage.setItem('burger:cartInfo', JSON.stringify(newCart))
+  } else {
+    deleteProducts(ProductId)
+  }
+
+  }
+
   useEffect(() => {
     const loadUserData = async () => {
       const clientCartData = await localStorage.getItem('burger:cartInfo')
@@ -39,7 +77,7 @@ export const CartProvider = ({ children }) => {
   }, [])
 
   return (
-    <CartContext.Provider value={{ putProductsInCart, cartProducts }}>
+    <CartContext.Provider value={{ putProductsInCart, cartProducts, increaseProducts, decreaseProducts }}>
       {children}
     </CartContext.Provider>
   )
