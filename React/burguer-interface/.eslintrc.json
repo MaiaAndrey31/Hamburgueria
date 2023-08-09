@@ -30,7 +30,6 @@
 
     // example configuration
     "newlinesBetween": 2,
-    "groups": [1, "/^@shared/", ["parent", "sibling", "index"]],
-    "alphabetize": { "order": "asc", "ignoreCase": true }
+    "groups": [1, "/^@shared/", ["parent", "sibling", "index"]]
   }
 }
