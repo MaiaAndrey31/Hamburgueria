@@ -11,6 +11,7 @@ justify-content: space-between;
 
 .container-top {
     display: grid;
+    grid-gap: 10px 50px;
     grid-template-areas: 
     'title title'
     'itens itens-price'
@@ -39,6 +40,7 @@ justify-content: space-between;
     flex-direction: row;
     justify-content: space-between;
     font-size: 24px;
+    margin-top: 50px;
 }
 
 
