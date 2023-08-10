@@ -54,6 +54,7 @@ export function Products() {
 
   return (
     <Container>
+      
       <ProductImg src={productLogo} alt="logo da home" />
       <CategoriesMenu>
         {categories &&
