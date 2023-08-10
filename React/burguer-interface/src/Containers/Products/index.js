@@ -14,7 +14,7 @@ import formatCurrency from '../../utils/FormatCurrency'
 
 export function Products({location: {state}}) {
   let categoryId = 0
-  if(state.categoryId){
+  if(state?.categoryId){
     categoryId = state.categoryId
   }
 
@@ -23,7 +23,7 @@ export function Products({location: {state}}) {
   const [categories, setCategories] = useState([])
   const [products, setProducts] = useState([])
   const [filteredproducts, setFilteredProducts] = useState([])
-  const [activeCategory, setactiveCategory] = useState(0)
+  const [activeCategory, setactiveCategory] = useState(categoryId)
 
   useEffect(() => {
     async function loadCategories() {

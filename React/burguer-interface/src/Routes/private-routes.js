@@ -25,6 +25,6 @@ return (
 
 export default PrivateRoutes
 
-PrivateRoutes.PropTypes={
+PrivateRoutes.propTypes={
     component: PropTypes.oneOfType([PropTypes.func, PropTypes.element])
 }

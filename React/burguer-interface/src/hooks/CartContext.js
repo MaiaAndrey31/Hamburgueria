@@ -13,8 +13,8 @@ export const CartProvider = ({ children }) => {
 
   }
 
-  const putProductsInCart = async (product) => {
-    const cartIndex = cartProducts.findIndex((prd) => prd.id === product.id)
+  const putProductsInCart = async product => {
+    const cartIndex = cartProducts.findIndex(prd => prd.id === product.id)
     let newCartProduct = []
     if (cartIndex >= 0) {
        newCartProduct = cartProducts
@@ -26,10 +26,10 @@ export const CartProvider = ({ children }) => {
     } else {
       product.quantity = 1
       newCartProduct = [...cartProducts, product]
-      setCartProducts()
+      setCartProducts(newCartProduct)
     }
 
-    await localStorage.setItem('burger:cartInfo', JSON.stringify(newCartProduct))
+    await updateLocalStorage(newCartProduct)
   }
 
   const deleteProducts = async ProductId => {
@@ -44,12 +44,12 @@ export const CartProvider = ({ children }) => {
     })
     setCartProducts(newCart)
 
-    await localStorage.setItem('burger:cartInfo', JSON.stringify(newCart))
+    await updateLocalStorage(newCart)
   }
 
   const decreaseProducts = async ProductId => {
 
-    const cartIndex = cartProducts.findIndex(pd => pd.id === ProductId)
+    const cartIndex = cartProducts.findIndex(prd => prd.id === ProductId)
       if(cartProducts[cartIndex].quantity > 1){
 
     const newCart = cartProducts.map(product => {
@@ -57,7 +57,7 @@ export const CartProvider = ({ children }) => {
     })
     setCartProducts(newCart)
 
-    await localStorage.setItem('burger:cartInfo', JSON.stringify(newCart))
+    await updateLocalStorage(newCart)
   } else {
     deleteProducts(ProductId)
   }
@@ -94,5 +94,5 @@ export const useCart = () => {
 }
 
 CartProvider.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 }

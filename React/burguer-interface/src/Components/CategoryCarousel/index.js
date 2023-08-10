@@ -6,7 +6,7 @@ import api from "../../Services/api"
 
 
 export function CategoryCarousel() {
-  const [categories, setCategories] = useState()
+  const [categories, setCategories] = useState([])
 
   useEffect(() => {
     async function loadCategories() {

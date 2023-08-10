@@ -24,6 +24,8 @@ export function CartResume(){
     }, [cartProducts, tax])
 
     const submitOrder = async () => {
+
+        try {
         const order = cartProducts.map( product => {
             return {id: product.id, quantity: product.quantity}
         })
@@ -33,6 +35,7 @@ export function CartResume(){
             error:'Ops, aconteceu um erro.. Tente novamente! =('
 
         })
+    } catch{}
          
     }
 

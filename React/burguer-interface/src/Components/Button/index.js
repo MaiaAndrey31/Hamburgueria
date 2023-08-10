@@ -8,6 +8,6 @@ return <ContainerButton {...rest}>{children}</ContainerButton>
 
 
 
-Button.PropTypes ={
+Button.propTypes ={
     children: PropTypes.string
 }
