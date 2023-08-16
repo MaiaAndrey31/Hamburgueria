@@ -24,3 +24,15 @@ width: 250px;
 
 
 `
+
+export const Menu = styled.div`
+display: flex;
+gap: 50px;
+justify-content: center;
+margin: 20px 0;
+`
+
+export const LinkMenu = styled.link`
+color: #323D5D;
+cursor: pointer;
+`

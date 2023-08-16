@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
-import { Container } from './style'
+import { Container, Menu, LinkMenu } from './style'
 import api from '../../../Services/api'
+import status from "./OrderStatus";
 
  import Table from '@material-ui/core/Table';
  import TableBody from '@material-ui/core/TableBody';
@@ -55,6 +56,12 @@ console.log(orders)
       return (
 
     <Container>
+
+      <Menu>
+        {status && status.map(status => <LinkMenu key={status.id}>{status.label}</LinkMenu>)}
+
+      </Menu>
+
         <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
         <TableHead>
