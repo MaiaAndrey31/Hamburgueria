@@ -1,36 +1,32 @@
 import React, { useEffect, useState } from "react"
 import { Container } from './style'
 import api from '../../../Services/api'
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
-import Collapse from '@material-ui/core/Collapse';
-import IconButton from '@material-ui/core/IconButton';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+
+ import Table from '@material-ui/core/Table';
+ import TableBody from '@material-ui/core/TableBody';
+ import TableCell from '@material-ui/core/TableCell';
+ import TableContainer from '@material-ui/core/TableContainer';
+ import TableHead from '@material-ui/core/TableHead';
+ import TableRow from '@material-ui/core/TableRow';
+import Row from "./row";
+ import Paper from '@material-ui/core/Paper';
+import formatDate from "../../../utils/formatDate";
 
 
 
 
  function Orders(){
  const [orders, setOrders] = useState([])
+ const [rows, setRows] = useState([])
 
-
+console.log(orders)
     useEffect(() => {
         async function loadOrders() {
           const { data } = await api.get('orders')
     
           
     
-          setCategories(data)
+          setOrders(data)
         }    
        
         
@@ -42,17 +38,42 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
         return {
           name: order.user.name,
           orderId: order._id,
-          date: order.createdAt,
+          date: formatDate(order.createdAt),
           status: order.status,
-          products: order.products 
-         
+          products: order.products          
         };
       }
+
+      useEffect(() => {
+        const newRows = orders.map(ord => createData(ord))
+
+        setRows(newRows)
+
+      }, [orders])
+      
 
       return (
 
     <Container>
-        <h1>Pedidos</h1>
+        <TableContainer component={Paper}>
+      <Table aria-label="collapsible table">
+        <TableHead>
+          <TableRow>
+            <TableCell />
+            <TableCell>Pedido</TableCell>
+            <TableCell>Cliente</TableCell>
+            <TableCell>Data do Pedido</TableCell>
+            <TableCell>Status</TableCell>
+            
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((row) => (
+            <Row key={row.orderId} row={row} />
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
     </Container>
 
 
