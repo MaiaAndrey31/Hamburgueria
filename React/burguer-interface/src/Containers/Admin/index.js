@@ -1,10 +1,16 @@
-import React from "react";
+import React from "react"
+import { Container } from './style'
+import Orders from './Orders'
 
 export function Admin(){
+ return (
 
     <Container>
-        <div>
-            Admin
-        </div>
+        <h1>Admin</h1>
+        <Orders/>
     </Container>
+
+
+ )
+    
 }

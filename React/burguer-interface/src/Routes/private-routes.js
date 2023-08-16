@@ -3,7 +3,7 @@ import {Route, Redirect} from "react-router-dom"
 import PropTypes from "prop-types"
 import { Header } from "../Components"
 
-function PrivateRoutes({component, ...rest}){
+function PrivateRoutes({component,isAdmin, ...rest}){
 const user = localStorage.getItem('burger:userInfo')
 
 if (!user){
@@ -11,10 +11,14 @@ if (!user){
     return <Redirect to="/login" />
     
 }
+if(isAdmin && !JSON.parse(user).admin){
+return <Redirect to="/" />
+ }
+
 
 return ( 
 <>
-<Header/>
+{!isAdmin && <Header/>}
 <Route {...rest} component={component} />
 </>
 
@@ -26,5 +30,6 @@ return (
 export default PrivateRoutes
 
 PrivateRoutes.propTypes={
-    component: PropTypes.oneOfType([PropTypes.func, PropTypes.element])
+    component: PropTypes.oneOfType([PropTypes.func, PropTypes.element]),
+    isAdmin: PropTypes.bool
 }
