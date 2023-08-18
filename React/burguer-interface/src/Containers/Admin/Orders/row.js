@@ -14,13 +14,12 @@ import { ProductsImg, ReactSelectStyle } from './style'
  import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
  import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import api from "../../../Services/api";
-
 import status from './OrderStatus';
 
 
 
 
- function Row({row}){
+ function Row({row, setOrders, orders}){
   const [open, setOpen] = React.useState(false)
   const [isLoading, setIsLoading] = React.useState(false)
 
@@ -31,6 +30,11 @@ import status from './OrderStatus';
 
     try {
       await api.put(`orders/${id}`, {status})
+
+      const newOrders = orders.map(order => {
+        return order._id === id ? {...order, status} : order
+      })
+      setOrders(newOrders)
     }
     catch(err){
       console.log(err)
@@ -108,6 +112,8 @@ import status from './OrderStatus';
 }
 
 Row.propTypes = {
+  orders: PropTypes.array,
+  setOrders: PropTypes.func,
   row: PropTypes.shape({
     name: PropTypes.string.isRequired,
     orderId: PropTypes.string.isRequired,
