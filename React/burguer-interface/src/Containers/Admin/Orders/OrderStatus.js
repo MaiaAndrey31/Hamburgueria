@@ -1,8 +1,9 @@
 const status =[
     {
-        id: 1,
-        value: 'Todos',
-        label: 'Todos'
+        id:1,
+        label: 'Todos',
+        value: 'Todos'
+        
     
     },
 {

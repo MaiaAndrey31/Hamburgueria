@@ -56,10 +56,18 @@ import formatDate from "../../../utils/formatDate";
       }, [filteredOrders])
 
       useEffect(() => {
-        const statusIndex = status.findIndex(sts => sts.status === activeStatus)
-        const newFilteredOrders = orders.filter(order => order.status === status[statusIndex].value )
+        if (activeStatus === 1){
+          setFilteredOrders(orders)
+
+        }
+        else {
+        const statusIndex = status.findIndex(sts => sts.id === activeStatus)
+        const newFilteredOrders = orders.filter(
+          order => order.status === status[statusIndex].value )
+      
 
         setFilteredOrders(newFilteredOrders)
+        }
 
       }, [orders])
 
@@ -80,7 +88,8 @@ import formatDate from "../../../utils/formatDate";
     <Container>
 
       <Menu>
-        {status && status.map(status =>(
+        {status &&
+         status.map(status =>(
            <LinkMenu key={status.id}
         onClick={() => handleStatus(status)
         } 
@@ -105,7 +114,7 @@ import formatDate from "../../../utils/formatDate";
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {rows.map(row => (
             <Row key={row.orderId} row={row} setOrders={setOrders} orders={orders} />
           ))}
         </TableBody>

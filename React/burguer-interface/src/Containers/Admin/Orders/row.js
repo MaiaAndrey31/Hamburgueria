@@ -61,7 +61,7 @@ import status from './OrderStatus';
         <TableCell>
 
           <ReactSelectStyle
-           options={ status} 
+           options={ status.filter(sts => sts.value !== 'Todos')} 
            placeholder='Status'
            defaultValue={status.find(option => option.value === row.status) || null
           }

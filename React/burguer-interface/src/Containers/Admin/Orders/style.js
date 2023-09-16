@@ -35,7 +35,7 @@ margin: 20px 0;
 export const LinkMenu = styled.a`
 color: #323D5D;
 cursor: pointer;
-font-weight: ${props => (props.isActiveStatus ? 'bold' : '400')};
-border-bottom: ${props => (props.isActiveStatus ? '2px solid #975BA6' : 'none')};
+font-weight: ${ props => (props.isActiveStatus ? 'bold' : '400')};
+border-bottom: ${ props => (props.isActiveStatus ? '2px solid #975BA6' : 'none')};
 `
 
