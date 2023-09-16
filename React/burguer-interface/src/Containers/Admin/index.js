@@ -1,6 +1,7 @@
 import React from "react"
-import { Container } from './style'
-import Orders from './Orders'
+import { Container, ContainerItems } from './style'
+import ListProducts from "./ListProducts"
+// import Orders from './Orders'
 import { SideMenuAdmin } from "../../Components"
 
 export function Admin(){
@@ -8,7 +9,11 @@ export function Admin(){
 
     <Container>
         <SideMenuAdmin/>
-        <Orders/>
+        <ContainerItems>
+        <ListProducts/>
+        {/* <Orders/> */}
+        </ContainerItems>
+       
     </Container>
 
 
