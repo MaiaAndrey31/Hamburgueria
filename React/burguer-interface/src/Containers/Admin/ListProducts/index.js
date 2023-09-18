@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import api from '../../../Services/api'
+import formatCurrency from '../../../utils/FormatCurrency'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -11,9 +12,12 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import CancelIcon from '@mui/icons-material/Cancel';
+
+
 import {
   Container,
-  Img
+  Img,
+  EditIcons
 } from './style'
 
 const useStyles = makeStyles({
@@ -24,7 +28,7 @@ const useStyles = makeStyles({
 
  function ListProducts() {
   const classes = useStyles();
-const [products, setProducts] = useState([])
+const [products, setProducts] = useState()
 
   useEffect(() => {
     async function loadOrders() {
@@ -42,9 +46,9 @@ const [products, setProducts] = useState([])
 
   function isOffer(offerStatus){
     if(offerStatus){
-      return <CheckBoxIcon/>
+      return <CheckBoxIcon style={{color: '#228B22'}}/>
     }
-    return <CancelIcon/>
+    return <CancelIcon style={{color: '#CC1717'}}/>
   }
   
   return (
@@ -55,21 +59,21 @@ const [products, setProducts] = useState([])
           <TableRow>
             <TableCell>Nome</TableCell>
             <TableCell >Preço</TableCell>
-            <TableCell >Oferta</TableCell>
-            <TableCell ></TableCell>
+            <TableCell align='center'>Oferta</TableCell>
+            <TableCell align='center'>Imagem do Produto</TableCell>
             <TableCell >Editar</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {products.map(product => (
+          {products && products.map(product => (
             <TableRow key={product.id}>
               <TableCell component="th" scope="row">
                 {product.name}
               </TableCell>
-              <TableCell >{product.price}</TableCell>
-              <TableCell >{isOffer(product.offer)}</TableCell>
-              <TableCell ><Img src={product.url} alt="imagem do produto"/></TableCell>
-              <TableCell ><button>Editar</button></TableCell>
+              <TableCell >{formatCurrency(product.price)}</TableCell>
+              <TableCell align='center' >{isOffer(product.offer)}</TableCell>
+              <TableCell align='center'><Img src={product.url} alt="imagem do produto"/></TableCell>
+              <TableCell ><EditIcons/></TableCell>
             </TableRow>
           ))}
         </TableBody>

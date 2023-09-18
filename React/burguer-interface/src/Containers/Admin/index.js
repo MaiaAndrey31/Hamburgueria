@@ -1,17 +1,23 @@
 import React from "react"
 import { Container, ContainerItems } from './style'
 import ListProducts from "./ListProducts"
-// import Orders from './Orders'
+import Orders from './Orders'
+import NewProduct from './NewProduct'
 import { SideMenuAdmin } from "../../Components"
+import PropTypes from 'prop-types'
+import paths from '../../constants/paths'
 
-export function Admin(){
+export function Admin({match: {path}}){
  return (
 
     <Container>
-        <SideMenuAdmin/>
+        <SideMenuAdmin path={path}/>
         <ContainerItems>
-        <ListProducts/>
-        {/* <Orders/> */}
+            {path === paths.Order &&  <Orders/>}
+            {path === paths.Products &&  <ListProducts/>}
+            {path === paths.NewProduct &&  <NewProduct/>}
+        
+       
         </ContainerItems>
        
     </Container>
@@ -19,4 +25,8 @@ export function Admin(){
 
  )
     
+}
+
+Admin.propTypes ={
+    match: PropTypes.object
 }
