@@ -35,14 +35,7 @@ export const ContainerItems = styled.div`
     flex-direction: column;
   }
 `
-export const ErrorMessage = styled.p`
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 16px;
-  margin-top: 2px;
-  color: #cc1717;
-`
+
 
 export const Label = styled.p`
   font-style: normal;

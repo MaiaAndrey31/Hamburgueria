@@ -7,7 +7,7 @@ import {toast} from 'react-toastify'
 
 import apiBurguer from '../../Services/api'
 
-import {Button} from '../../Components'
+import {Button, ErrorMessage} from '../../Components'
 import RegImg from '../../Assets/SignupImg.svg'
 import Logo from '../../Assets/logo.svg'
 
@@ -18,7 +18,7 @@ import {
   Input,
   SignInLink,
   Label,
-  ErrorMessage,
+  
 } from './style'
 
 export function Register() {

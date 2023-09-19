@@ -9,7 +9,7 @@ import { useUser } from '../../hooks/UserContext'
 
 import apiBurguer from '../../Services/api'
 
-import {Button} from '../../Components'
+import {Button, ErrorMessage} from '../../Components'
 import LoginImg from '../../Assets/loginImage.svg'
 import Logo from '../../Assets/logo.svg'
 
@@ -20,7 +20,7 @@ import {
   Input,
   CadastroLink,
     Label,
-  ErrorMessage
+  
 } from './style'
 
 export function Login() {

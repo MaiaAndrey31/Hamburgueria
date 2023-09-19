@@ -5,29 +5,29 @@ import { useForm, Controller } from 'react-hook-form'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useHistory } from 'react-router-dom'
-import { Container, Label, Input, ButtonStyles, LabelUpload } from './style'
+import { Container, Label, Input, ButtonStyles, LabelUpload, ContainerInput } from './style'
 import ReactSelect from 'react-select'
 import { ErrorMessage } from '../../../Components'
 import { toast } from 'react-toastify'
 
-function NewProduct() {
-  const {push} = useHistory()
+function EditProduct() {
+  const {
+    push,
+    location: {
+      state: {
+        product
+      }
+    }
+  } = useHistory()
+ 
   const [fileName, setFileName] = useState(null)
   const [categories, setCategories] = useState([])
   const schema = Yup.object().shape({
     name: Yup.string().required('Digite o Nome do Produto'),
     price: Yup.string().required('Digite o Preço do Produto'),
     category: Yup.object().required('Selecione uma Categoria'),
-    file: Yup.mixed()
-      .test('required', 'Carregue a Imagem', (value) => {
-        return value?.length > 0
-      })
-      // .test('size', 'Carregue arquivos de no maximo 2mb', (value) => {
-      //   return value[0]?.size <= 200000
-      // })
-      .test('type', 'Permitido apenas arquivos jpeg ou png', (value) => {
-        return value[0]?.type === 'image/jpeg' || value[0]?.type === 'image/png'
-      }),
+    offer: Yup.bool()
+    
   })
 
   const {
@@ -38,19 +38,23 @@ function NewProduct() {
   } = useForm({
     resolver: yupResolver(schema),
   })
-  const onSubmit = async data => {
+  const onSubmit = async (data) => {
     const productDataFormData = new FormData()
 
     productDataFormData.append('name', data.name)
     productDataFormData.append('price', data.price)
     productDataFormData.append('category_id', data.category.id)
     productDataFormData.append('file', data.file[0])
+    productDataFormData.append('offer', data.offer)
 
-    await toast.promise( api.post('/products', productDataFormData),{
-      pending: 'Criando o Produto',
-      success: 'Produto Criado com sucesso',
-      error: 'Erro ao Criar o Produto'
-    })
+    await toast.promise(
+      api.put(`products/${product.id}`, productDataFormData),
+      {
+        pending: 'Editando o Produto',
+        success: 'Produto Editado com sucesso',
+        error: 'Erro ao Editar o Produto',
+      }
+    )
     setTimeout(() => {
       push('/lista-produtos')
     }, 2000)
@@ -71,12 +75,20 @@ function NewProduct() {
       <form noValidate onSubmit={handleSubmit(onSubmit)}>
         <div>
           <Label>Nome</Label>
-          <Input type="text" {...register('name')} />
+          <Input
+            type="text"
+            {...register('name')}
+            defaultValue={product.name}
+          />
           <ErrorMessage>{errors.name?.message}</ErrorMessage>
         </div>
         <div>
           <Label>Preço</Label>
-          <Input type="number" {...register('price')} />
+          <Input
+            type="number"
+            {...register('price')}
+            defaultValue={product.price}
+          />
           <ErrorMessage>{errors.price?.message}</ErrorMessage>
         </div>
         <div>
@@ -103,6 +115,7 @@ function NewProduct() {
           <Controller
             name="category"
             control={control}
+            defaultValue={product.category}
             render={({ field }) => {
               return (
                 <ReactSelect
@@ -111,15 +124,25 @@ function NewProduct() {
                   getOptionLabel={(cat) => cat.name}
                   getOptionValue={(cat) => cat.id}
                   placeholder="Categorias"
+                  defaultValue={product.category}
                 />
               )
             }}
           />
           <ErrorMessage>{errors.category?.message}</ErrorMessage>
         </div>
-        <ButtonStyles> Adicionar Produtos</ButtonStyles>
+
+        <ContainerInput>
+          <input
+            type="checkbox"
+            {...register('offer')}
+            defaultChecked={product.offer}
+          />
+          <Label>Produto em Oferta?</Label>
+        </ContainerInput>
+        <ButtonStyles> Editar Produtos</ButtonStyles>
       </form>
     </Container>
   )
 }
-export default NewProduct
+export default EditProduct

@@ -59,4 +59,14 @@ input {
 }
 
 `
+export const ContainerInput = styled.div`
+display: flex;
+align-items: baseline;
+gap: 10px;
+input {
+    height: 15px;
+    width: 15px;
+    cursor: pointer;
+}
+`
 
