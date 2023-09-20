@@ -1,14 +1,14 @@
 /* eslint-disable prettier/prettier */
-import * as yup from 'yup'
+import * as Yup from 'yup'
 import jwt from 'jsonwebtoken'
 import User from '../models/User'
 import authConfig from '../../config/auth'
 
 class SessionController {
   async store(req, res) {
-    const schema = yup.object().shape({
-      email: yup.string().email().required(),
-      password: yup.string().required(),
+    const schema = Yup.object().shape({
+      email: Yup.string().email().required(),
+      password: Yup.string().required(),
     })
 
     const validationUserIncorrect = () => {
