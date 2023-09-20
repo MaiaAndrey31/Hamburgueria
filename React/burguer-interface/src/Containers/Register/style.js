@@ -10,10 +10,10 @@ export const Container = styled.div`
   align-items: center;
 `
 export const RegisterImage = styled.img`
-  height: 80%;
+  height: 95%;
 `
 export const ContainerItems = styled.div`
-  height: 80%;
+  height: 95%;
   background: #373737;
   border-radius: 0 10px 10px 0;
   display: flex;
@@ -27,7 +27,7 @@ export const ContainerItems = styled.div`
     line-height: 28px;
     text-align: center;
     color: #ffffff;
-    margin-top: 6px;
+    
   }
 
   form {
@@ -42,7 +42,7 @@ export const Label = styled.p`
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
-  margin-top:  ${(props) => (props.error ? '12px' : '18px' )} ;
+  margin-top:  ${(props) => (props.error ? '8px' : '14px' )} ;
   margin-bottom: 5px;
   color: #ffffff;
 `
